@@ -19,13 +19,31 @@ public class SortingTest {
 
 	@BeforeClass
 	public static void init() {
-		int arrayLength = 10;
+		int arrayLength = 100;
 
 		integerArray = createArray(arrayLength, false);
 
 		sortedArray = integerArray.clone();
 		Arrays.sort(sortedArray);
+		integerArray = sortedArray;
 
+	}
+
+	@Test
+	public void testInsertionSort() {
+
+		System.out.println("\n\nStarting Insertion Test");
+
+		int[] integerArray = this.integerArray.clone();
+
+		print(integerArray, null);
+		long startTime = System.nanoTime();
+		ArraySorter.insertionSort(integerArray);
+		long endTime = System.nanoTime();
+		print(integerArray, null);
+
+		System.out.println("time taken (nano-s): " + ((endTime - startTime) / 1000) + "K");
+		Assert.assertArrayEquals(sortedArray, integerArray);
 	}
 
 	@Test
@@ -35,14 +53,14 @@ public class SortingTest {
 
 		int[] integerArray = this.integerArray.clone();
 
-		print(integerArray);
+		print(integerArray, null);
 		long startTime = System.nanoTime();
 		ArraySorter.selectionSort(integerArray);
 		long endTime = System.nanoTime();
-		print(integerArray);
+		print(integerArray, null);
 
-		System.out.println("time taken (nano-s/1000): " + ((endTime - startTime) / 1000));
-		Assert.assertArrayEquals(integerArray, sortedArray);
+		System.out.println("time taken (nano-s): " + ((endTime - startTime) / 1000) + "K");
+		Assert.assertArrayEquals(sortedArray, integerArray);
 	}
 
 	@Test
@@ -52,14 +70,14 @@ public class SortingTest {
 
 		int[] integerArray = this.integerArray.clone();
 
-		print(integerArray);
+		print(integerArray, null);
 		long startTime = System.nanoTime();
 		ArraySorter.bubbleSort(integerArray);
 		long endTime = System.nanoTime();
-		print(integerArray);
-		System.out.println("time taken (nano-s/1000): " + ((endTime - startTime) / 1000));
+		print(integerArray, null);
+		System.out.println("time taken (nano-s): " + ((endTime - startTime) / 1000) + "K");
 
-		Assert.assertArrayEquals(integerArray, sortedArray);
+		Assert.assertArrayEquals(sortedArray, integerArray);
 	}
 
 }

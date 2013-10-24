@@ -70,8 +70,9 @@ public class Utility {
 		System.out.println(Utility.createArray(arrayLen, false));
 	}
 
-	public static void print(int[] integerArray) {
-		System.out.println(Arrays.toString(integerArray));
+	public static void print(int[] integerArray, String msg) {
+		msg = (msg == null ? "" : msg); 
+		System.out.println(msg + "\t" + Arrays.toString(integerArray));
 
 	}
 
