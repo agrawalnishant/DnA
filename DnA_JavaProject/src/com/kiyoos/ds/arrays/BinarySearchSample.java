@@ -1,5 +1,7 @@
 package com.kiyoos.ds.arrays;
 
+import static com.kiyoos.ds.arrays.Utility.createArray;
+
 
 public class BinarySearchSample {
 
@@ -36,10 +38,12 @@ public class BinarySearchSample {
 		BinarySearchSample sample = new BinarySearchSample();
 		
 		int arrayLength = 100;
-		int[] integerArray = new int[arrayLength];
-		int targetPos = Utility.createArray(integerArray, arrayLength, true);
-		int targetNum = integerArray[targetPos];
-		System.out.println("target pos: " + targetPos + ", num: " + targetNum);
+		int[] integerArray = createArray( arrayLength, true);
+		int randomIndex = new Double(Math.random() * (1.0 * arrayLength)).intValue();
+		int targetNum = integerArray[randomIndex];
+		
+		System.out.println("target pos: " + randomIndex + ", num: " + targetNum);
+		
 		System.out.println("searched pos: " + sample.binSearch(integerArray, targetNum, 0, arrayLength - 1));
 
 	}
