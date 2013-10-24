@@ -1,6 +1,6 @@
 package com.kiyoos.algos.sorting;
 
-import static com.kiyoos.ds.arrays.Utility.swap;
+import static com.kiyoos.algos.Utility.swap;
 
 public class ArraySorter {
 

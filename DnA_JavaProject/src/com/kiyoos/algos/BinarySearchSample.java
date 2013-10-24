@@ -1,6 +1,6 @@
-package com.kiyoos.ds.arrays;
+package com.kiyoos.algos;
 
-import static com.kiyoos.ds.arrays.Utility.createArray;
+import static com.kiyoos.algos.Utility.createArray;
 
 
 public class BinarySearchSample {

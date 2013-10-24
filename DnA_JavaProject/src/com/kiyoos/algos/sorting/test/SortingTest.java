@@ -1,7 +1,7 @@
 package com.kiyoos.algos.sorting.test;
 
-import static com.kiyoos.ds.arrays.Utility.createArray;
-import static com.kiyoos.ds.arrays.Utility.print;
+import static com.kiyoos.algos.Utility.createArray;
+import static com.kiyoos.algos.Utility.print;
 
 import java.util.Arrays;
 

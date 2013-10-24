@@ -1,4 +1,4 @@
-package com.kiyoos.ds.arrays;
+package com.kiyoos.algos;
 
 import java.util.Arrays;
 import java.util.Random;
