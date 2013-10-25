@@ -22,29 +22,29 @@ public class CircularIntQueue {
 
 		if (tail == capacity - 1) {
 			tail = -1;
-			qArr[++tail] = elem;
-
-		} else {
-			qArr[++tail] = elem;
 		}
+
+		qArr[++tail] = elem;
+
 		++qLen;
 		return true;
 
 	}
 
 	public int remove() {
-		if (qLen <= 0){
-			//head = tail;
+		if (qLen <= 0) {
 			return -1;
 		}
-		int tmp = qArr[head];
-		qArr[head++] = ' ';
+
+		int tmp = qArr[head++];
+
 		if (head == capacity) {
 			head = 0;
 
 		} else if (qLen == 0) {
 			head = tail;
 		}
+
 		--qLen;
 
 		return tmp;
@@ -59,9 +59,9 @@ public class CircularIntQueue {
 		if (qLen <= 0)
 			return qContents;
 		while (tmpQLen-- > 0) {
-			qContents += ("," +(char) qArr[pos++]);
+			qContents += ("," + (char) qArr[pos++]);
 
-			if (pos >= capacity ) {
+			if (pos >= capacity) {
 				pos = 0;
 			}
 		}
