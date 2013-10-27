@@ -1,19 +1,19 @@
 package com.kiyoos.algos;
 
-public class Anagram {
+public class AnagramPermutations {
 
 	private char[] charArray;
 	private int length;
 
-	public Anagram(String input) {
+	public AnagramPermutations(String input) {
 		charArray = input.toCharArray();
 		length = input.length();
 	}
 
 	public static void main(String[] args) {
 		String input = "cats";
-		Anagram anagram = new Anagram(input);
-		anagram.doAnagrams(input.length());
+		AnagramPermutations anagramPermutations = new AnagramPermutations(input);
+		anagramPermutations.doAnagrams(input.length());
 	}
 
 	public void doAnagrams(int newLen) {

@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.kiyoos.algos.Partitioning;
 import com.kiyoos.algos.sorting.ArraySorter;
 
 public class SortingTest {
@@ -25,8 +26,21 @@ public class SortingTest {
 
 		sortedArray = integerArray.clone();
 		Arrays.sort(sortedArray);
-		integerArray = sortedArray;
+		//integerArray = sortedArray;
 
+	}
+	
+	@Test
+	public void testPartitioning(){
+		System.out.println("\n\nStarting Partitioning Test");
+
+		int[] integerArray = this.integerArray.clone();
+
+		print(integerArray, "Input to partition: ");
+		System.out.println("PartitionPos: "  + Partitioning.partiionArray(integerArray));
+		print(integerArray, "Output from Partition: ");
+		
+		
 	}
 
 	@Test
