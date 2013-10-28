@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.kiyoos.ds.CircularIntQueue;
+import com.kiyoos.ds.Tree;
 
 public class DataStructureTests {
 
@@ -45,6 +46,11 @@ public class DataStructureTests {
 		
 		
 
+	}
+	
+	public void testInorderTraversal(){
+		Tree tree = new Tree();
+		
 	}
 
 }
