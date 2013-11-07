@@ -8,24 +8,25 @@ package com.kiyoos.ds;
  */
 public class Node {
 
-	private int id;
+	private int key;
 	private Object data;
 	private Node leftNode;
 	private Node rightNode;
 	private Node parent;
+	private boolean isRed = true;
 
 	public Node(int id, Object data, Node parent) {
-		this.id = id;
+		this.key = id;
 		this.data = data;
 		this.parent = parent;
 	}
 
-	public int getId() {
-		return id;
+	public int key() {
+		return key;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setKey(int key) {
+		this.key = key;
 	}
 
 	public Object getData() {
@@ -52,12 +53,52 @@ public class Node {
 		this.rightNode = rightNode;
 	}
 
-	public Node getParent() {
+	public Node parent() {
 		return parent;
 	}
 
 	public void setParent(Node parent) {
 		this.parent = parent;
+	}
+
+	public boolean isRed() {
+		return isRed;
+	}
+	
+	public boolean isBlack() {
+		return !isRed;
+	}
+
+	public void setRed(boolean isRed) {
+		this.isRed = isRed;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + key;
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (!(obj instanceof Node))
+			return false;
+		Node other = (Node) obj;
+		if (key != other.key)
+			return false;
+		return true;
 	}
 
 }

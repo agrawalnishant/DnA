@@ -25,13 +25,13 @@ public class Tree {
 	 * @return node with its parent.
 	 */
 	public Node find(Node input) {
-		int key = input.getId();
+		int key = input.key();
 
 		Node next = root;
 
-		while (next != null && next.getId() != key) {
+		while (next != null && next.key() != key) {
 
-			if (key < next.getId())
+			if (key < next.key())
 				next = next.left();
 			else
 				next = next.right();
@@ -52,7 +52,7 @@ public class Tree {
 			root = input;
 		} else {
 
-			int key = input.getId();
+			int key = input.key();
 			Node targetPos = root;
 			Node parent = targetPos;
 
@@ -60,7 +60,7 @@ public class Tree {
 			while (targetPos != null) {
 				parent = targetPos;
 
-				if (key < targetPos.getId()) {
+				if (key < targetPos.key()) {
 					targetPos = targetPos.left();
 				} else {
 					targetPos = targetPos.right();
@@ -68,7 +68,7 @@ public class Tree {
 
 			}
 
-			if (key < parent.getId()) {
+			if (key < parent.key()) {
 				parent.setLeft(input);
 			} else {
 				parent.setRight(input);
@@ -86,18 +86,18 @@ public class Tree {
 			root = null;
 		}
 
-		int key = input.getId();
+		int key = input.key();
 
 		// Find the node to be deleted.
 		Node current = root;
 		Node parent = current;
 		boolean isLeftChild = false;
 
-		while (current != null && current.getId() != key) {
+		while (current != null && current.key() != key) {
 
 			parent = current;
 
-			if (key < current.getId()) {
+			if (key < current.key()) {
 				isLeftChild = true;
 				current = current.left();
 			} else {
@@ -202,7 +202,7 @@ public class Tree {
 			next = previous.left();
 		}
 
-		System.out.println("Minimum: [K:" + previous.getId() + ", V:" + previous.getData() + "]");
+		System.out.println("Minimum: [K:" + previous.key() + ", V:" + previous.getData() + "]");
 
 		return previous;
 
@@ -228,17 +228,17 @@ public class Tree {
 
 		case INORDER:
 			System.out.println("\n Inorder \n");
-			inorder(root);
+			inorder(getRoot());
 			break;
 
 		case PREORDER:
 			System.out.println("\n PREORDER \n");
-			preorder(root);
+			preorder(getRoot());
 			break;
 
 		case POSTORDER:
 			System.out.println("\n POSTORDER \n");
-			postorder(root);
+			postorder(getRoot());
 			break;
 
 		default:
@@ -253,7 +253,7 @@ public class Tree {
 
 		inorder(node.left());
 
-		System.out.println("[K:" + node.getId() + ", V:" + node.getData() + "]");
+		System.out.println("[K:" + node.key() + ", V:" + node.getData() + "]");
 
 		inorder(node.right());
 
@@ -264,7 +264,7 @@ public class Tree {
 		if (node == null)
 			return;
 
-		System.out.println("[K:" + node.getId() + ", V:" + node.getData() + "]");
+		System.out.println("[K:" + node.key() + ", V:" + node.getData() + "]");
 
 		preorder(node.left());
 
@@ -280,8 +280,22 @@ public class Tree {
 
 		inorder(node.right());
 
-		System.out.println("[K:" + node.getId() + ", V:" + node.getData() + "]");
+		System.out.println("[K:" + node.key() + ", V:" + node.getData() + "]");
 
+	}
+
+	/**
+	 * @return the root
+	 */
+	public Node getRoot() {
+		return root;
+	}
+
+	/**
+	 * @param root the root to set
+	 */
+	public void setRoot(Node root) {
+		this.root = root;
 	}
 
 }
