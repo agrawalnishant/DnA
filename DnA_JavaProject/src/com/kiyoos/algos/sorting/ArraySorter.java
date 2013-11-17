@@ -2,7 +2,29 @@ package com.kiyoos.algos.sorting;
 
 import static com.kiyoos.algos.Utility.swap;
 
+import java.util.Arrays;
+
+import com.kiyoos.ds.Heap;
+
 public class ArraySorter {
+	
+	public static void main(String[] args) {
+		int[] arr = new int[] {34,2,67,90,23,8,209,896,98,1,87,98,27};
+		heapSort(arr);
+	}
+
+	public static void heapSort(int[] sourceArray) {
+		int heapSize = sourceArray.length;
+		Heap heap = new Heap(sourceArray);
+		heap.buildMaxHeap();
+		for (int count = heapSize - 1; count > 0; count--) {
+			swap(sourceArray,0,count);
+			heap.setHeapSize(count);
+			heap.maxHeapify(0);
+		}
+		
+		System.out.println("After heapsort, array: " + Arrays.toString(heap.getSrcArray()));
+	}
 
 	public static void insertionSort(int[] sourceArray) {
 		int arrayLen = sourceArray.length;
@@ -18,7 +40,7 @@ public class ArraySorter {
 				--inCounter;
 			}
 			sourceArray[inCounter + 1] = temp;
-			//print(sourceArray, null);
+			// print(sourceArray, null);
 		}
 	}
 
@@ -36,10 +58,12 @@ public class ArraySorter {
 				}
 
 			}
-		//	System.out.println("Swapping sourceArray[" + outCounter + "] = " + sourceArray[outCounter] + " and sourceArray[" + minPos + "] = " + sourceArray[minPos]);
+			// System.out.println("Swapping sourceArray[" + outCounter + "] = "
+			// + sourceArray[outCounter] + " and sourceArray[" + minPos + "] = "
+			// + sourceArray[minPos]);
 
 			swap(sourceArray, outCounter, minPos);
-			//print(sourceArray, null);
+			// print(sourceArray, null);
 		}
 
 	}
@@ -53,12 +77,16 @@ public class ArraySorter {
 			for (int inCounter = 0; inCounter < outCounter; inCounter++) {
 
 				if (sourceArray[inCounter] > sourceArray[inCounter + 1]) {
-				//	System.out.println("----------".substring(0, maxArrayIndex - outCounter + 1) + "Swapping sourceArray[" + inCounter + "] = " + sourceArray[inCounter] + " and sourceArray[" + (inCounter + 1) + "] = " + sourceArray[inCounter + 1]);
+					// System.out.println("----------".substring(0,
+					// maxArrayIndex - outCounter + 1) + "Swapping sourceArray["
+					// + inCounter + "] = " + sourceArray[inCounter] +
+					// " and sourceArray[" + (inCounter + 1) + "] = " +
+					// sourceArray[inCounter + 1]);
 					swap(sourceArray, inCounter, inCounter + 1);
 				}
 
 			}
-		//	print(sourceArray, null);
+			// print(sourceArray, null);
 
 		}
 
