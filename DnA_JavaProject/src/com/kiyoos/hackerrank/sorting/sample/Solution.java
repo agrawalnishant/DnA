@@ -39,6 +39,7 @@ public class Solution {
 			String[] strArr = input.split(" ");
 			while (--count >= 0) {
 				if (strArr[count].equals("" + targetNum)) {
+					
 					System.out.println(count );
 					break;
 				}

@@ -38,6 +38,7 @@ public class Solution {
 
 			int count = 0;
 			while (count++ < testCases) {
+				
 				input = reader.readLine();
 
 				m = p.matcher(input);
