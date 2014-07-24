@@ -2,13 +2,13 @@ package com.kiyoos.ds.tree;
 
 public class TreeIteratorImpl implements TreeIterator {
 
-	private AbstractSortedTree tree;
+	private AbstractBinarySearchTree tree;
 	
 	private final Node[] stackOfNodes;
 	private Integer stackPointer;
 	private Integer itrCount = 0;
 
-	public TreeIteratorImpl(final AbstractSortedTree tree) {
+	public TreeIteratorImpl(final AbstractBinarySearchTree tree) {
 		this.tree = tree;
 		stackOfNodes = new Node[tree.getDepth()];
 		stackPointer = tree.getDepth();

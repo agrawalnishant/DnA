@@ -9,10 +9,10 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
-import com.kiyoos.ds.tree.AbstractSortedTree;
-import com.kiyoos.ds.tree.AbstractSortedTree.Traversal;
+import com.kiyoos.ds.tree.AbstractBinarySearchTree;
+import com.kiyoos.ds.tree.AbstractBinarySearchTree.Traversal;
+import com.kiyoos.ds.tree.BinarySearchTree;
 import com.kiyoos.ds.tree.Node;
-import com.kiyoos.ds.tree.SortedTree;
 
 /**
  * @author _root_nishi
@@ -31,7 +31,7 @@ public class TreeTests {
 
 	@Test
 	public void test() throws InterruptedException {
-		AbstractSortedTree tree = new SortedTree();
+		AbstractBinarySearchTree tree = new BinarySearchTree();
 		Node root = new Node(100, "1", null);
 		Node leftChild = new Node(30, "2", null);
 		Node rightChild = new Node(700, "3", null);
@@ -60,41 +60,53 @@ public class TreeTests {
 
 		node = new Node(40, "8", null);
 		tree.insert(node);
-		
 
 		node = new Node(80, "9", null);
 		tree.insert(node);
-		
+
 		node = new Node(800, "10", null);
 		tree.insert(node);
 		node = new Node(801, "11", null);
 		tree.insert(node);
-		node = new Node(802, "12", null);
+		node = new Node(802, "13", null);
 		tree.insert(node);
-		
+
+		node = new Node(812, "14", null);
+		tree.insert(node);
+
+		node = new Node(822, "15", null);
+		tree.insert(node);
+
 		tree.traverse(Traversal.INORDER);
 
-		Assert.assertEquals(
-				"Depth should be 5 for given data, but instead it is: "
-						+ tree.getDepth(), tree.getDepth(), 5);
-		
-		
-		System.out.println("Inorder representation :" + Arrays.asList(tree.displayAsArray()));
+		Assert.assertEquals("Depth should be 7 for given data, but instead it is: " + tree.getDepth(), tree.getDepth(), 7);
+
+		System.out.println("Inorder representation :" + Arrays.asList(tree.displayAsInorderArray()));
 
 		Node newNode = new Node(30, "8", null);
 		tree.delete(newNode);
 		tree.traverse(Traversal.INORDER);
 
+		Assert.assertEquals("Depth should still be 7 for given data, but instead it is: " + tree.getDepth(), tree.getDepth(), 7);
+
+		newNode = new Node(822, "8", null);
+		tree.delete(newNode);
+
+		Assert.assertEquals("Depth should now be 6 for given data, but instead it is: " + tree.calculateDepth(tree.getRoot()),
+				tree.calculateDepth(tree.getRoot()), 6);
+
 		System.out.println("Depth is :" + tree.getDepth());
-		
-		
-		
+
+		Node nd = tree.getAsInorderLinkedList();
+		while (nd != null) {
+			System.out.println(" - " + nd.key());
+			nd = nd.getNextLink();
+		}
+
 	}
 
 	/*
-	 * @Test public void testRedBlackTreeInsertion() { RedBlackTree rbTree = new
-	 * RedBlackTree(); Node root = new Node(100, "1", null);
-	 * rbTree.insert(root);
+	 * @Test public void testRedBlackTreeInsertion() { RedBlackTree rbTree = new RedBlackTree(); Node root = new Node(100, "1", null); rbTree.insert(root);
 	 * 
 	 * Node node = new Node(50, "50", null); rbTree.insert(node);
 	 * 
@@ -108,9 +120,7 @@ public class TreeTests {
 	 */
 
 	/*
-	 * @Test public void testRedBlackTreeInsertion() { RedBlackTree rbTree = new
-	 * RedBlackTree(); Node node = new Node(200, "200", null);
-	 * rbTree.insert(node);
+	 * @Test public void testRedBlackTreeInsertion() { RedBlackTree rbTree = new RedBlackTree(); Node node = new Node(200, "200", null); rbTree.insert(node);
 	 * 
 	 * node = new Node(1, "1", null); rbTree.insert(node);
 	 * 

@@ -4,10 +4,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.kiyoos.ds.CircularIntQueue;
-import com.kiyoos.ds.tree.AbstractSortedTree;
+import com.kiyoos.ds.tree.AbstractBinarySearchTree;
 import com.kiyoos.ds.tree.Node;
 import com.kiyoos.ds.tree.RedBlackTree;
-import com.kiyoos.ds.tree.SortedTree;
+import com.kiyoos.ds.tree.BinarySearchTree;
 
 public class DataStructureTests {
 
@@ -52,7 +52,7 @@ public class DataStructureTests {
 	}
 	
 	public void testInorderTraversal(){
-		AbstractSortedTree tree = new SortedTree();
+		AbstractBinarySearchTree tree = new BinarySearchTree();
 	}
 	
 	

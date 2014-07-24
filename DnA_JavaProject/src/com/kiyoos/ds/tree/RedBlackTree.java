@@ -1,7 +1,7 @@
 package com.kiyoos.ds.tree;
 
 
-public class RedBlackTree extends SortedTree{
+public class RedBlackTree extends BinarySearchTree{
 
 	private Node root;
 

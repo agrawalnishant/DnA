@@ -15,6 +15,8 @@ public class Node {
 	private Node parent;
 	private boolean isRed = true;
 	
+	private Node nextLink;
+	
 	private int level;
 
 	public Node(int id, Object data, Node parent) {
@@ -115,6 +117,14 @@ public class Node {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public Node getNextLink() {
+		return nextLink;
+	}
+
+	public void setNextLink(Node nextLink) {
+		this.nextLink = nextLink;
 	}
 
 }
