@@ -2,9 +2,17 @@ package com.kiyoos.ds.tree;
 
 import java.util.Arrays;
 
+import com.kiyoos.ds.Stack;
+import com.kiyoos.ds.StackImpl;
+
 public abstract class AbstractBinarySearchTree {
 
-	public enum Traversal {
+	public enum RecursiveTraversal {
+		INORDER, PREORDER, POSTORDER;
+
+	}
+
+	public enum NonRecursiveTraversal {
 		INORDER, PREORDER, POSTORDER;
 
 	}
@@ -45,8 +53,8 @@ public abstract class AbstractBinarySearchTree {
 
 		if (getRoot() == null) {
 			setRoot(input);
-			setDepth(1);
-			input.setLevel(1);
+			setDepth(0);
+			input.setLevel(0);
 		} else {
 
 			// Start at root.
@@ -141,16 +149,16 @@ public abstract class AbstractBinarySearchTree {
 
 		// If one child
 		case 1:
-			if (current.left() != null) {
-				if (current == getRoot()) {
+			if (current.left() != null) { // if target node to be deleted had a left child
+				if (current == getRoot()) { // imp check.
 					setRoot(current.left());
-				} else if (isLeftChild) {
+				} else if (isLeftChild) { // and was itself left child
 					parent.setLeft(current.left());
-				} else {
+				} else {// or was itself right child
 					parent.setRight(current.left());
 				}
 
-			} else if (current.right() != null) {
+			} else if (current.right() != null) { // if target node to be deleted had a right child
 				if (current == getRoot()) {
 					setRoot(current.right());
 				} else if (isLeftChild) {
@@ -227,12 +235,10 @@ public abstract class AbstractBinarySearchTree {
 		if (currentNode == null)
 			return null;
 
-		
-
 		return currentNode;
 	}
 
-	public void traverse(BinarySearchTree.Traversal mode) {
+	public void traverse(BinarySearchTree.RecursiveTraversal mode) {
 
 		switch (mode) {
 
@@ -254,6 +260,44 @@ public abstract class AbstractBinarySearchTree {
 		default:
 			break;
 		}
+	}
+
+	public void traverse(BinarySearchTree.NonRecursiveTraversal mode) {
+
+		switch (mode) {
+
+		case INORDER:
+			System.out.println("\n Inorder NonRecursive \n");
+			inorderNonRecur(getRoot());
+			break;
+		/*
+		 * case PREORDER: System.out.println("\n PREORDER \n"); preorderNonRecur(getRoot()); break;
+		 * 
+		 * case POSTORDER: System.out.println("\n POSTORDER \n"); postorderNonRecur(getRoot()); break;
+		 */
+
+		default:
+			break;
+		}
+	}
+
+	private void inorderNonRecur(Node root) {
+		Stack<Node> bufferStack = new StackImpl<Node>(1000);
+		while (true) {
+			while (root != null) {
+				//System.out.println(root);
+				bufferStack.push(root);
+				root = root.left();
+			}
+			if (bufferStack.isEmpty())
+				break;
+			Node aNode = bufferStack.pop();
+			if (aNode != null) {
+				System.out.println(aNode);
+				root = aNode.right();
+			}
+		}
+
 	}
 
 	void inorder(Node node) {

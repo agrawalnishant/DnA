@@ -1,8 +1,12 @@
 package com.kiyoos;
 
 public class Lab {
-
+	
+	
 	public static void main(String[] args) {
+		
+		
+		//Runnable r = () -> { System.out.println("hello"); };
 		int[] arr = new int[2];
 		arr[0] = 5;
 		arr[1] = 8;

@@ -10,7 +10,8 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import com.kiyoos.ds.tree.AbstractBinarySearchTree;
-import com.kiyoos.ds.tree.AbstractBinarySearchTree.Traversal;
+import com.kiyoos.ds.tree.AbstractBinarySearchTree.NonRecursiveTraversal;
+import com.kiyoos.ds.tree.AbstractBinarySearchTree.RecursiveTraversal;
 import com.kiyoos.ds.tree.BinarySearchTree;
 import com.kiyoos.ds.tree.Node;
 
@@ -42,9 +43,13 @@ public class TreeTests {
 
 		System.out.println("Depth is :" + tree.getDepth());
 
-		tree.traverse(Traversal.PREORDER);
-		tree.traverse(Traversal.INORDER);
-		tree.traverse(Traversal.POSTORDER);
+		tree.traverse(RecursiveTraversal.PREORDER);
+		tree.traverse(RecursiveTraversal.INORDER);
+		tree.traverse(RecursiveTraversal.POSTORDER);
+		
+		tree.traverse(NonRecursiveTraversal.PREORDER);
+		//tree.traverse(NonRecursiveTraversal.INORDER);
+		//tree.traverse(NonRecursiveTraversal.POSTORDER);
 
 		Node node = new Node(20, "4", null);
 		tree.insert(node);
@@ -77,17 +82,17 @@ public class TreeTests {
 		node = new Node(822, "15", null);
 		tree.insert(node);
 
-		tree.traverse(Traversal.INORDER);
+		tree.traverse(RecursiveTraversal.INORDER);
 
-		Assert.assertEquals("Depth should be 7 for given data, but instead it is: " + tree.getDepth(), tree.getDepth(), 7);
+		Assert.assertEquals("Depth should be 7 for given data, but instead it is: " + tree.getDepth(), tree.getDepth(), 6);
 
 		System.out.println("Inorder representation :" + Arrays.asList(tree.displayAsInorderArray()));
 
 		Node newNode = new Node(30, "8", null);
 		tree.delete(newNode);
-		tree.traverse(Traversal.INORDER);
+		tree.traverse(RecursiveTraversal.INORDER);
 
-		Assert.assertEquals("Depth should still be 7 for given data, but instead it is: " + tree.getDepth(), tree.getDepth(), 7);
+		Assert.assertEquals("Depth should still be 7 for given data, but instead it is: " + tree.getDepth(), tree.getDepth(), 6);
 
 		newNode = new Node(822, "8", null);
 		tree.delete(newNode);
