@@ -3,7 +3,7 @@ package com.kiyoos.algos;
 import java.util.Arrays;
 import java.util.Random;
 
-import com.kiyoos.algos.sorting.ArraySorter;
+import com.kiyoos.algos.sorting.InsertionSort;
 
 public class Utility {
 
@@ -43,7 +43,7 @@ public class Utility {
 	 */
 	private static int medianOfThree(int[] inputArray) {
 		System.out.println("Median ");
-		ArraySorter.insertionSort(inputArray);
+		new InsertionSort().sort(inputArray);
 		return inputArray[1];
 
 	}
