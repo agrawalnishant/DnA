@@ -10,9 +10,9 @@ public class ArraySorter {
 		for (int outCounter = 1; outCounter < arrayLen; outCounter++) {
 
 			int temp = sourceArray[outCounter];
-
 			int inCounter = outCounter - 1;
 
+			// Iterate inward while moving larger elements outward to sort in ASC order.
 			while (inCounter >= 0 && sourceArray[inCounter] > temp) {
 				sourceArray[inCounter + 1] = sourceArray[inCounter];
 				--inCounter;
@@ -30,6 +30,7 @@ public class ArraySorter {
 
 			int minPos = outCounter;
 
+			// Find the Minimum ( or Maximum) in remaining positions, and bring it to front by swapping.
 			for (int inCounter = outCounter + 1; inCounter < arrayLen; inCounter++) {
 				if (sourceArray[minPos] > sourceArray[inCounter]) {
 					minPos = inCounter;
@@ -50,16 +51,14 @@ public class ArraySorter {
 		int arrayLen = sourceArray.length;
 		int maxArrayIndex = arrayLen - 1;
 
+		
+		// Keep swapping successive elements to bubble-up maximum / minimum, to top.
 		for (int outCounter = arrayLen - 1; outCounter > 0; outCounter--) {
 
 			for (int inCounter = 0; inCounter < outCounter; inCounter++) {
 
 				if (sourceArray[inCounter] > sourceArray[inCounter + 1]) {
-					// System.out.println("----------".substring(0,
-					// maxArrayIndex - outCounter + 1) + "Swapping sourceArray["
-					// + inCounter + "] = " + sourceArray[inCounter] +
-					// " and sourceArray[" + (inCounter + 1) + "] = " +
-					// sourceArray[inCounter + 1]);
+					
 					swap(sourceArray, inCounter, inCounter + 1);
 				}
 

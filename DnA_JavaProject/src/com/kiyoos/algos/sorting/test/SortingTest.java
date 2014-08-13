@@ -10,7 +10,10 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.kiyoos.algos.Partitioning;
-import com.kiyoos.algos.sorting.ArraySorter;
+import com.kiyoos.algos.sorting.BubbleSort;
+import com.kiyoos.algos.sorting.CombBubbleSort;
+import com.kiyoos.algos.sorting.InsertionSort;
+import com.kiyoos.algos.sorting.SelectionSort;
 
 public class SortingTest {
 
@@ -26,21 +29,21 @@ public class SortingTest {
 
 		sortedArray = integerArray.clone();
 		Arrays.sort(sortedArray);
-		//integerArray = sortedArray;
+		// integerArray = sortedArray;
 
 	}
-	
+
 	@Test
-	public void testPartitioning(){
+	public void testPartitioning() {
 		System.out.println("\n\nStarting Partitioning Test");
 
 		int[] integerArray = this.integerArray.clone();
 
 		print(integerArray, "Input to partition: ");
-		System.out.println("PartitionPos: "  + Partitioning.partiionArray(integerArray));
+		System.out.println("PartitionPos: "
+				+ Partitioning.partiionArray(integerArray));
 		print(integerArray, "Output from Partition: ");
-		
-		
+
 	}
 
 	@Test
@@ -52,11 +55,12 @@ public class SortingTest {
 
 		print(integerArray, null);
 		long startTime = System.nanoTime();
-		ArraySorter.insertionSort(integerArray);
+		new InsertionSort().sort(integerArray);
 		long endTime = System.nanoTime();
 		print(integerArray, null);
 
-		System.out.println("time taken (nano-s): " + ((endTime - startTime) / 1000) + "K");
+		System.out.println("time taken (nano-s): "
+				+ ((endTime - startTime) / 1000) + "K");
 		Assert.assertArrayEquals(sortedArray, integerArray);
 	}
 
@@ -69,11 +73,12 @@ public class SortingTest {
 
 		print(integerArray, null);
 		long startTime = System.nanoTime();
-		ArraySorter.selectionSort(integerArray);
+		new SelectionSort().sort(integerArray);
 		long endTime = System.nanoTime();
 		print(integerArray, null);
 
-		System.out.println("time taken (nano-s): " + ((endTime - startTime) / 1000) + "K");
+		System.out.println("time taken (nano-s): "
+				+ ((endTime - startTime) / 1000) + "K");
 		Assert.assertArrayEquals(sortedArray, integerArray);
 	}
 
@@ -86,10 +91,29 @@ public class SortingTest {
 
 		print(integerArray, null);
 		long startTime = System.nanoTime();
-		ArraySorter.bubbleSort(integerArray);
+		new BubbleSort().sort(integerArray);
 		long endTime = System.nanoTime();
 		print(integerArray, null);
-		System.out.println("time taken (nano-s): " + ((endTime - startTime) / 1000) + "K");
+		System.out.println("time taken (nano-s): "
+				+ ((endTime - startTime) / 1000) + "K");
+
+		Assert.assertArrayEquals(sortedArray, integerArray);
+	}
+
+	@Test
+	public void testCombBubbleSort() {
+
+		System.out.println("\n\nStarting Comb Bubble Sort Test");
+
+		int[] integerArray = this.integerArray.clone();
+
+		print(integerArray, null);
+		long startTime = System.nanoTime();
+		new CombBubbleSort().sort(integerArray);
+		long endTime = System.nanoTime();
+		print(integerArray, null);
+		System.out.println("time taken (nano-s): "
+				+ ((endTime - startTime) / 1000) + "K");
 
 		Assert.assertArrayEquals(sortedArray, integerArray);
 	}
